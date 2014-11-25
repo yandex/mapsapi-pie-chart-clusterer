@@ -29,6 +29,11 @@ ymaps.modules.require(['PieChartClusterer'], function (PieChartClusterer) {
 });
 ```
 
+Demo
+----
+http://yandex.github.io/ymaps-pie-chart-clusterer/
+
+
 Examples
 --------
 * Displaing Clusterer of different Placemark types.
