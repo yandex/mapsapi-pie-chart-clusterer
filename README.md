@@ -1,6 +1,6 @@
 # Yandex Maps API PieChartClusterer Module
 
-**PieChartClusterer** is an extention of standart [Yandex Maps JS API 2.1 Clusterer](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Clusterer-docpage/)
+**PieChartClusterer** is an extention of standard [Yandex Maps JS API 2.1 Clusterer](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Clusterer-docpage/)
 that represents numerical proportion of different [Placemark](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Placemark-docpage/)
  [types](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/option.presetStorage-docpage/)
 in [Cluster](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/ClusterPlacemark-docpage/).
@@ -36,7 +36,7 @@ http://yandex.github.io/ymaps-pie-chart-clusterer/
 
 Examples
 --------
-* Displaing Clusterer of different Placemark types.
+* Displaying Clusterer of different Placemark types.
 ```js
 ymaps.ready(function () {
     var myMap = new ymaps.Map('YMapsID', {
@@ -63,4 +63,4 @@ ymaps.ready(function () {
 
 Building
 --------
-Use [ym-builder](https://www.npmjs.org/package/ym-builder) if rebuild needed.
+Use [ym-builder](https://www.npmjs.org/package/ym-builder) if re-build is needed.
