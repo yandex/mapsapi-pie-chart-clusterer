@@ -39,7 +39,7 @@ Examples
 * Displaing Clusterer of different Placemark types.
 ```js
 ymaps.ready(function () {
-    var myMap = window.map = new ymaps.Map('YMapsID', {
+    var myMap = new ymaps.Map('YMapsID', {
         center: [55.7517318022522, 37.61691485505143],
         zoom: 10
     });
