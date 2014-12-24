@@ -4,43 +4,52 @@ ym.modules.define('PieChartClusterer', [
     'util.extend',
     'PieChartClusterer.icon.params',
     'PieChartClusterer.component.Canvas'
-], function (provide, Clusterer, defineClass, extend, iconParams, PieChartClustererCanvas) {
+], function (
+    provide,
+    Clusterer,
+    defineClass,
+    extend,
+    iconParams,
+    PieChartClustererCanvas
+) {
 
-    var styleRegExp = /#(.+?)(?=Icon|DotIcon|StretchyIcon|CircleIcon|CircleDotIcon)/,
-        getIconStyle = function (preset) {
-            return preset.match(styleRegExp)[1];
-        },
-        PieChartClusterer = defineClass(function (options) {
-            PieChartClusterer.superclass.constructor.call(this, options);
+    var STYLE_REG_EXP = /#(.+?)(?=Icon|DotIcon|StretchyIcon|CircleIcon|CircleDotIcon)/;
 
-            this._canvas = new PieChartClustererCanvas(iconParams.icons.large.size);
-            this._canvas.options.setParent(this.options);
-        }, Clusterer, {
-            createCluster: function (center, geoObjects) {
-                // Создаем метку-кластер с помощью стандартной реализации метода.
-                var clusterPlacemark = PieChartClusterer.superclass.createCluster.call(this, center, geoObjects),
-                    styleGroups = geoObjects.reduce(function (groups, geoObject) {
-                        var style = getIconStyle(geoObject.options.get('preset', 'islands#blueIcon'));
+    var PieChartClusterer = defineClass(function (options) {
+        PieChartClusterer.superclass.constructor.call(this, options);
 
-                        groups[style] = ++groups[style] || 1;
+        this._canvas = new PieChartClustererCanvas(iconParams.icons.large.size);
+        this._canvas.options.setParent(this.options);
+    }, Clusterer, {
+        createCluster: function (center, geoObjects) {
+            // Создаем метку-кластер с помощью стандартной реализации метода.
+            var clusterPlacemark = PieChartClusterer.superclass.createCluster.call(this, center, geoObjects);
+            var styleGroups = geoObjects.reduce(function (groups, geoObject) {
+                var style = getIconStyle(geoObject.options.get('preset', 'islands#blueIcon'));
 
-                        return groups;
-                    }, {}),
-                    iconUrl = this._canvas.generateIconDataURL(styleGroups, geoObjects.length),
-                    clusterOptions = {
-                        clusterIcons: [
-                            extend({ href: iconUrl }, iconParams.icons.small),
-                            extend({ href: iconUrl }, iconParams.icons.medium),
-                            extend({ href: iconUrl }, iconParams.icons.large)
-                        ],
-                        clusterNumbers: iconParams.numbers
-                    };
+                groups[style] = ++groups[style] || 1;
 
-                clusterPlacemark.options.set(clusterOptions);
+                return groups;
+            }, {});
+            var iconUrl = this._canvas.generateIconDataURL(styleGroups, geoObjects.length);
+            var clusterOptions = {
+                clusterIcons: [
+                    extend({href: iconUrl}, iconParams.icons.small),
+                    extend({href: iconUrl}, iconParams.icons.medium),
+                    extend({href: iconUrl}, iconParams.icons.large)
+                ],
+                clusterNumbers: iconParams.numbers
+            };
 
-                return clusterPlacemark;
-            }
-        });
+            clusterPlacemark.options.set(clusterOptions);
+
+            return clusterPlacemark;
+        }
+    });
+
+    function getIconStyle(preset) {
+        return preset.match(STYLE_REG_EXP)[1];
+    }
 
     provide(PieChartClusterer);
 });

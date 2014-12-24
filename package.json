@@ -12,9 +12,13 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "jscs": "1.8.1",
     "ym-builder": "^0.1.1"
   },
   "engines": {
     "node": ">=0.8.0"
+  },
+  "scripts": {
+    "lint": "jscs -p yandex src"
   }
 }
