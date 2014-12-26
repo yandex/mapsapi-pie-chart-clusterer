@@ -20,6 +20,6 @@ ym.modules.define('PieChartClusterer.icon.params', [
                 shape: new CircleShape(new PixelCircleGeometry([0, 2], 34))
             }
         },
-        numbers: [ 10, 100 ]
+        numbers: [10, 100]
     });
 });

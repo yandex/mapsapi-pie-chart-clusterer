@@ -25,13 +25,14 @@ ym.modules.define('PieChartClusterer.component.Canvas', [
     };
 
     Canvas.prototype._drawIcon = function (styleGroups, total) {
-        var startAt = 0, endAt = 360,
-            ctx = this._context,
-            x = this._canvas.width / 2,
-            y = this._canvas.height / 2,
-            lineWidth = this.options.get('iconLineWidth', DEFAULT_OPTIONS.iconLineWidth),
-            strokeStyle = this.options.get('iconStrokeStyle', DEFAULT_OPTIONS.iconStrokeStyle),
-            radius = Math.floor((x + y - lineWidth) / 2);
+        var startAt = 0;
+        var endAt = 360;
+        var ctx = this._context;
+        var x = this._canvas.width / 2;
+        var y = this._canvas.height / 2;
+        var lineWidth = this.options.get('iconLineWidth', DEFAULT_OPTIONS.iconLineWidth);
+        var strokeStyle = this.options.get('iconStrokeStyle', DEFAULT_OPTIONS.iconStrokeStyle);
+        var radius = Math.floor((x + y - lineWidth) / 2);
 
         ctx.strokeStyle = strokeStyle;
         ctx.lineWidth = lineWidth;
@@ -42,10 +43,9 @@ ym.modules.define('PieChartClusterer.component.Canvas', [
             endAt = startAt + (num * 360 / total);
             ctx.fillStyle = this._getStyleColor(style);
 
-            if(total > num) {
+            if (total > num) {
                 startAt = this._drawSector(x, y, radius, startAt, endAt);
-            }
-            else {
+            } else {
                 this._drawCircle(x, y, radius);
             }
         }, this);
@@ -54,9 +54,9 @@ ym.modules.define('PieChartClusterer.component.Canvas', [
     };
 
     Canvas.prototype._drawCore = function (x, y) {
-        var ctx = this._context,
-            fillStyle = this.options.get('iconCoreFillStyle', DEFAULT_OPTIONS.iconCoreFillStyle),
-            radius = this.options.get('iconCoreRadius', DEFAULT_OPTIONS.iconCoreRadius);
+        var ctx = this._context;
+        var fillStyle = this.options.get('iconCoreFillStyle', DEFAULT_OPTIONS.iconCoreFillStyle);
+        var radius = this.options.get('iconCoreRadius', DEFAULT_OPTIONS.iconCoreRadius);
 
         ctx.fillStyle = fillStyle;
         this._drawCircle(x, y, radius);

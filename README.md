@@ -25,7 +25,7 @@ ymaps.modules.require(['PieChartClusterer'], function (PieChartClusterer) {
      * Supports all Clusterer constructor options.
      * @see https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Clusterer-docpage/
      */
-    var clusterer = new PieChartClusterer({ margin: 10 });
+    var clusterer = new PieChartClusterer({margin: 10});
 });
 ```
 
@@ -46,12 +46,36 @@ ymaps.ready(function () {
     ymaps.modules.require(['PieChartClusterer'], function (PieChartClusterer) {
         var clusterer = new PieChartClusterer();
         var points = [
-            new ymaps.Placemark([55.75498702962238, 37.618202315378575], { balloonContent: 'museum' }, { preset: 'islands#brownIcon' }),
-            new ymaps.Placemark([55.754662597966856, 37.621551735588916], { balloonContent: 'shopping centre' }, { preset: 'islands#blueIcon' }),
-            new ymaps.Placemark([55.753610957072794, 37.6258667510446], { balloonContent: 'shopping centre' }, { preset: 'islands#blueIcon' }),
-            new ymaps.Placemark([55.752475871211445, 37.623210672898345], { balloonContent: 'temple' }, { preset: 'islands#greenIcon' }),
-            new ymaps.Placemark([55.755421360094026, 37.622878078980506], { balloonContent: 'cafe' }, { preset: 'islands#redIcon' }),
-            new ymaps.Placemark([55.75573597375927, 37.62162280516154], { balloonContent: 'restaurant' }, { preset: 'islands#orangeIcon' }),
+            new ymaps.Placemark(
+                [55.75498702962238, 37.618202315378575],
+                {balloonContent: 'museum'},
+                {preset: 'islands#brownIcon'}
+            ),
+            new ymaps.Placemark(
+                [55.754662597966856, 37.621551735588916],
+                {balloonContent: 'shopping centre'},
+                {preset: 'islands#blueIcon'}
+            ),
+            new ymaps.Placemark(
+                [55.753610957072794, 37.6258667510446],
+                {balloonContent: 'shopping centre'},
+                {preset: 'islands#blueIcon'}
+            ),
+            new ymaps.Placemark(
+                [55.752475871211445, 37.623210672898345],
+                {balloonContent: 'temple'},
+                {preset: 'islands#greenIcon'}
+            ),
+            new ymaps.Placemark(
+                [55.755421360094026, 37.622878078980506],
+                {balloonContent: 'cafe'},
+                {preset: 'islands#redIcon'}
+            ),
+            new ymaps.Placemark(
+                [55.75573597375927, 37.62162280516154],
+                {balloonContent: 'restaurant'},
+                {preset: 'islands#orangeIcon'}
+            )
         ];
 
         clusterer.add(points);

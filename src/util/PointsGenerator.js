@@ -47,11 +47,13 @@ ym.modules.define('RandomPointsGenerator', [
      */
     RandomPointsGenerator.prototype.atBounds = function (bounds) {
         // протяженность области просмотра в градусах
-        var span = [bounds[1][0] - bounds[0][0], bounds[1][1] - bounds[0][1]],
-            points = [];
+        var span = [bounds[1][0] - bounds[0][0], bounds[1][1] - bounds[0][1]];
+        var points = [];
 
-        for(var i = 0; i < this.count; i++) {
-            points[i] = this.createPlacemark([Math.random() * span[0] + bounds[0][0], Math.random() * span[1] + bounds[0][1]], i);
+        for (var i = 0; i < this.count; i++) {
+            points[i] = this.createPlacemark(
+                [Math.random() * span[0] + bounds[0][0], Math.random() * span[1] + bounds[0][1]], i
+            );
         }
 
         return points;
@@ -66,12 +68,12 @@ ym.modules.define('RandomPointsGenerator', [
      * @returns {ymaps.Placemark[]} Массив меток.
      */
     RandomPointsGenerator.prototype.atCenterAndRadius = function (center, radius) {
-        var distance, direction, coords, points = [];
+        var points = [];
 
-        for(var i = 0; i < this.count; i++) {
-            direction = [Math.random() - Math.random(), Math.random() - Math.random()];
-            distance = radius * Math.random();
-            coords = coordSystem.solveDirectProblem(center, direction, distance).endPoint;
+        for (var i = 0; i < this.count; i++) {
+            var direction = [Math.random() - Math.random(), Math.random() - Math.random()];
+            var distance = radius * Math.random();
+            var coords = coordSystem.solveDirectProblem(center, direction, distance).endPoint;
             points[i] = this.createPlacemark(coords, i);
         }
 
@@ -100,7 +102,7 @@ ym.modules.define('RandomPointsGenerator', [
     RandomPointsGenerator.prototype.createPlacemark = function (coordinates, index) {
         return new ymaps.GeoObject({
             geometry: {
-                type: "Point",
+                type: 'Point',
                 coordinates: coordinates
             },
             properties: this.getPointData(index)
