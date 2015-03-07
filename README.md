@@ -1,15 +1,15 @@
 # Yandex Maps API PieChartClusterer Module
 
-**PieChartClusterer** is an extention of standard [Yandex Maps JS API 2.1 Clusterer](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Clusterer-docpage/)
+**PieChartClustererLayout** is an [Yandex Maps JS API 2.1 Layout Class](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/templateLayoutFactory-docpage/)
 that represents numerical proportion of different [Placemark](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Placemark-docpage/)
  [types](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/option.presetStorage-docpage/)
-in [Cluster](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/ClusterPlacemark-docpage/).
+and should be used with [ObjectManager](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/ObjectManager-docpage/) with clusterize option is set to *true*.
 `PieChartClusterer` class allows to construct and display such representations over geographical maps using [PieChart](http://en.wikipedia.org/wiki/Pie_chart) icon.
 
 Loading
 -------
 
-1. Put module source code ([pie-chart-clusterer.min.js](https://github.com/yandex/ymaps-pie-chart-clusterer/blob/master/build/pie-chart-clusterer.min.js)) on your CDN.
+1. Put module source code ([pie-chart-clusterer.min.js](https://github.com/yandex/ymaps-pie-chart-clusterer/blob/layout/build/pie-chart-clusterer.min.js)) on your CDN.
 
 2. Load both [Yandex Maps JS API 2.1](http://api.yandex.com/maps/doc/jsapi/) and module source code by adding following code into &lt;head&gt; section of your page
 ```html
@@ -20,18 +20,17 @@ Loading
 
 3. Get access to module functions by using [ymaps.modules.require](http://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/modules.require.xml) method
 ```js
-ymaps.modules.require(['PieChartClusterer'], function (PieChartClusterer) {
-    /**
-     * Supports all Clusterer constructor options.
-     * @see https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Clusterer-docpage/
-     */
-    var clusterer = new PieChartClusterer({margin: 10});
+ymaps.modules.require(['PieChartClustererLayout'], function (PieChartClustererLayout) {
+    var objectManager = ymaps.ObjectManager({
+        clusterize: true,
+        clusterIconLayout: PieChartClustererLayout
+    });
 });
 ```
 
 Demo
 ----
-http://yandex.github.io/ymaps-pie-chart-clusterer/
+http://yandex.github.io/ymaps-pie-chart-clusterer/index-object-manager.html
 
 
 Examples
@@ -43,43 +42,62 @@ ymaps.ready(function () {
         center: [55.7517318022522, 37.61691485505143],
         zoom: 10
     });
-    ymaps.modules.require(['PieChartClusterer'], function (PieChartClusterer) {
-        var clusterer = new PieChartClusterer();
+    ymaps.modules.require(['PieChartClustererLayout'], function (PieChartClustererLayout) {
+        var objectManager = ymaps.ObjectManager({
+            clusterize: true,
+            clusterIconLayout: PieChartClustererLayout
+        });
         var points = [
-            new ymaps.Placemark(
-                [55.75498702962238, 37.618202315378575],
-                {balloonContent: 'museum'},
-                {preset: 'islands#brownIcon'}
-            ),
-            new ymaps.Placemark(
-                [55.754662597966856, 37.621551735588916],
-                {balloonContent: 'shopping centre'},
-                {preset: 'islands#blueIcon'}
-            ),
-            new ymaps.Placemark(
-                [55.753610957072794, 37.6258667510446],
-                {balloonContent: 'shopping centre'},
-                {preset: 'islands#blueIcon'}
-            ),
-            new ymaps.Placemark(
-                [55.752475871211445, 37.623210672898345],
-                {balloonContent: 'temple'},
-                {preset: 'islands#greenIcon'}
-            ),
-            new ymaps.Placemark(
-                [55.755421360094026, 37.622878078980506],
-                {balloonContent: 'cafe'},
-                {preset: 'islands#redIcon'}
-            ),
-            new ymaps.Placemark(
-                [55.75573597375927, 37.62162280516154],
-                {balloonContent: 'restaurant'},
-                {preset: 'islands#orangeIcon'}
-            )
+            {
+                id: 'id-1',
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [55.75498702962238, 37.618202315378575]
+                },
+                properties: {},
+                options: {preset: 'islands#brownIcon'}
+            }, {
+                id: 'id-2',
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [55.754662597966856, 37.621551735588916]
+                },
+                properties: {},
+                options: {preset: 'islands#blueIcon'}
+            }, {
+                id: 'id-3',
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [55.753610957072794, 37.6258667510446]
+                },
+                properties: {},
+                options: {preset: 'islands#greenIcon'}
+            }, {
+                id: 'id-4',
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [55.755421360094026, 37.622878078980506]
+                },
+                properties: {},
+                options: {preset: 'islands#redIcon'}
+            }, {
+                id: 'id-5',
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [55.75573597375927, 37.62162280516154]
+                },
+                properties: {},
+                options: {preset: 'islands#orangeIcon'}
+            }
         ];
 
-        clusterer.add(points);
-        myMap.geoObjects.add(clusterer);
+        objectManager.add(points);
+        myMap.geoObjects.add(objectManager);
     });
 });
 ```
