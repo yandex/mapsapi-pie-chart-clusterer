@@ -11,14 +11,12 @@ Loading
 -------
 
 1. Put module source code ([pie-chart-clusterer.min.js](https://github.com/yandex/ymaps-pie-chart-clusterer/blob/layout/build/pie-chart-clusterer.min.js)) on your CDN.
-
 2. Load both [Yandex Maps JS API 2.1](http://api.yandex.com/maps/doc/jsapi/) and module source code by adding following code into &lt;head&gt; section of your page
 ```html
 <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <!-- Change my.cdn.tld to your CDN host name -->
 <script src="http://my.cdn.tld/pie-chart-clusterer.min.js" type="text/javascript"></script>
 ```
-
 3. Get access to module functions by using [ymaps.modules.require](http://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/modules.require.xml) method
 
 * ObjectManager
