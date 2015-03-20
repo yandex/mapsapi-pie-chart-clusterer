@@ -3,7 +3,8 @@
 **PieChartClustererLayout** is an [Yandex Maps JS API 2.1 Layout Class](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/templateLayoutFactory-docpage/)
 that represents numerical proportion of different [Placemark](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Placemark-docpage/)
  [types](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/option.presetStorage-docpage/)
-and should be used with [ObjectManager](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/ObjectManager-docpage/) with clusterize option is set to *true*.
+and should be used with [ObjectManager](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/ObjectManager-docpage/) with clusterize option is set to *true*,
+or [geoQuery.clusterize](https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/GeoQueryResult-docpage/#clusterize) method.
 `PieChartClusterer` class allows to construct and display such representations over geographical maps using [PieChart](http://en.wikipedia.org/wiki/Pie_chart) icon.
 
 Loading
@@ -19,6 +20,7 @@ Loading
 ```
 
 3. Get access to module functions by using [ymaps.modules.require](http://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/modules.require.xml) method
+* ObjectManager
 ```js
 ymaps.modules.require(['PieChartClustererLayout'], function (PieChartClustererLayout) {
     var objectManager = ymaps.ObjectManager({
@@ -27,10 +29,21 @@ ymaps.modules.require(['PieChartClustererLayout'], function (PieChartClustererLa
     });
 });
 ```
+* geoQuery
+```js
+ymaps.modules.require(['PieChartClustererLayout'], function (PieChartClustererLayout) {
+    var clusterer = ymaps.geoQuery(points).clusterize({
+        clusterIconLayout: PieChartClustererLayout
+    });
+});
+```
 
 Demo
 ----
+* ObjectManagerr
 http://yandex.github.io/ymaps-pie-chart-clusterer/index-object-manager.html
+* geoQuery
+http://yandex.github.io/ymaps-pie-chart-clusterer/index-geoquery.html
 
 
 Examples
