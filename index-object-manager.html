@@ -13,9 +13,9 @@
     <script type="text/javascript">
         ymaps.ready(function () {
             var myMap = new ymaps.Map('map', {
-                    center: [55.7517318022522, 37.61691485505143],
-                    zoom: 10
-                });
+                center: [55.7517318022522, 37.61691485505143],
+                zoom: 10
+            });
 
             ymaps.modules.require([
                 'RandomPointsGenerator', 'PieChartClustererLayout'
@@ -35,25 +35,25 @@
                 };
 
                 var objectManager = new ymaps.ObjectManager({
-	    	    clusterize: true,
-		    clusterIconLayout: PieChartClustererLayout
-		});
+                    clusterize: true,
+                    clusterIconLayout: PieChartClustererLayout
+                });
                 var points = generator.generate(200).atBounds(myMap.getBounds());
 
-		points.forEach(function (point) {
-    		    objectManager.add({
-			type: 'Feature',
-			geometry: {
-			    type: 'Point',
-			    coordinates: point.geometry.getCoordinates()
-			},
-			id: point.properties.get('id'),
-			properties: point.properties.getAll(),
-			options: {
-			    preset: point.options.get('preset')
-			}
-		    });
-		});
+                points.forEach(function (point) {
+                    objectManager.add({
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: point.geometry.getCoordinates()
+                        },
+                        id: point.properties.get('id'),
+                        properties: point.properties.getAll(),
+                        options: {
+                            preset: point.options.get('preset')
+                        }
+                    });
+                });
 
                 myMap.geoObjects.add(objectManager);
             });
