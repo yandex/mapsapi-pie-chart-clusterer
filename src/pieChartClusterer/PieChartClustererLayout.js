@@ -42,7 +42,9 @@ ym.modules.define('PieChartClustererLayout', [
             var canvas = new PieChartClustererCanvas(iconParams.icons.large.size);
             canvas.options.setParent(this.options);
             var styleGroups = geoObjects.reduce(function (groups, geoObject) {
-                var style = getIconStyle(geoObject.options.preset || geoObject.options.get('preset') || 'islands#blueIcon');
+                var preset = geoObject.options.preset ||
+                    (typeof geoObject.options.get === 'function' && geoObject.options.get('preset')) || 'islands#blueIcon';
+                var style = getIconStyle(preset);
 
                 groups[style] = ++groups[style] || 1;
 
