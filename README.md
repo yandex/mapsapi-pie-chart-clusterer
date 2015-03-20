@@ -20,6 +20,7 @@ Loading
 ```
 
 3. Get access to module functions by using [ymaps.modules.require](http://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/modules.require.xml) method
+
 * ObjectManager
 ```js
 ymaps.modules.require(['PieChartClustererLayout'], function (PieChartClustererLayout) {
