@@ -89,7 +89,8 @@ ym.modules.define('RandomPointsGenerator', [
      * @param {Number[]} size Линейные размеры области в метрах.
      * @returns {ymaps.Placemark[]} Массив меток.
      */
-    RandomPointsGenerator.prototype.atCenterAndSize = function (center, size) {};
+    RandomPointsGenerator.prototype.atCenterAndSize = function (center, size) {
+    };
 
     /**
      * Создает метку по координатам.
