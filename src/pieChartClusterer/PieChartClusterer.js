@@ -4,14 +4,12 @@ ym.modules.define('PieChartClusterer', [
     'util.extend',
     'PieChartClusterer.icon.params',
     'PieChartClusterer.component.Canvas'
-], function (
-    provide,
-    Clusterer,
-    defineClass,
-    extend,
-    iconParams,
-    PieChartClustererCanvas
-) {
+], function (provide,
+             Clusterer,
+             defineClass,
+             extend,
+             iconParams,
+             PieChartClustererCanvas) {
 
     var STYLE_REG_EXP = /#(.+?)(?=Icon|DotIcon|StretchyIcon|CircleIcon|CircleDotIcon)/;
 
