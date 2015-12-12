@@ -25,8 +25,11 @@ ym.modules.define('PieChartClusterer', [
             // Создаем метку-кластер с помощью стандартной реализации метода.
             var clusterPlacemark = PieChartClusterer.superclass.createCluster.call(this, center, geoObjects);
             var styleGroups = geoObjects.reduce(function (groups, geoObject) {
-                var style = getIconStyle(geoObject.options.get('preset', 'islands#blueIcon'));
-
+                // Пытаемся получить значение цвета из параметра цвета иконки
+                var style = geoObject.options.get('iconColor', null);
+                if (style === null) {
+                    style = getIconStyle(geoObject.options.get('preset', 'islands#blueIcon'));
+                } 
                 groups[style] = ++groups[style] || 1;
 
                 return groups;
