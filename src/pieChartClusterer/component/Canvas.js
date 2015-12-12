@@ -90,7 +90,8 @@ ym.modules.define('PieChartClusterer.component.Canvas', [
     };
 
     Canvas.prototype._getStyleColor = function (style) {
-        return iconColors[style];
+        // Ищем цвет в соответствии Preset'ов, иначе отдаем как есть.
+        return (typeof iconColors[style] === 'undefined')? style: iconColors[style];
     };
 
     provide(Canvas);
