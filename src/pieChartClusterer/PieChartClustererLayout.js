@@ -55,9 +55,9 @@ ym.modules.define('PieChartClustererLayout', [
             element.style.height = size[1] + 'px';
             element.style.left = offset[0] + 'px';
             element.style.top = offset[1] + 'px';
-            element.style['line-height'] = size[1] + 'px';
-            element.style['background-image'] = 'url(' + iconUrl + ')';
-            element.style['background-size'] = size[0] + 'px ' + size[1] + 'px';
+            element.style.lineHeight = size[1] + 'px';
+            element.style.backgroundImage = 'url(' + iconUrl + ')';
+            element.style.backgroundSize = size[0] + 'px ' + size[1] + 'px';
         },
         clear: function () {
             PieChartClustererLayout.superclass.clear.call(this);
