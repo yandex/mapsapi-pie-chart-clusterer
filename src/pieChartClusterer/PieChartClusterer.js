@@ -12,7 +12,6 @@ ym.modules.define('PieChartClusterer', [
     iconParams,
     PieChartClustererCanvas
 ) {
-    debugger;
     var PieChartClusterer = defineClass(function (options) {
         PieChartClusterer.superclass.constructor.call(this, options);
 
@@ -23,7 +22,7 @@ ym.modules.define('PieChartClusterer', [
             // Создаем метку-кластер с помощью стандартной реализации метода.
             var clusterPlacemark = PieChartClusterer.superclass.createCluster.call(this, center, geoObjects);
             var styleGroups = geoObjects.reduce(function (groups, geoObject) {
-                var style = geoObject.options.get('iconColor', '#87cefa');
+                var style = geoObject.options.get('iconColor', 'blue');
 
                 groups[style] = ++groups[style] || 1;
 

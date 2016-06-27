@@ -89,8 +89,8 @@ ym.modules.define('PieChartClusterer.component.Canvas', [
         return deg * Math.PI / 180;
     };
 
-    Canvas.prototype._getStyleColor = function (style) {
-        return iconColors[style];
+    Canvas.prototype._getStyleColor = function (color) {
+        return iconColors.hasOwnProperty(color) ? iconColors[color] : color;
     };
 
     provide(Canvas);
