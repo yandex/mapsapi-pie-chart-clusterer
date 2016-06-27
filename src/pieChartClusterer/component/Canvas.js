@@ -41,7 +41,7 @@ ym.modules.define('PieChartClusterer.component.Canvas', [
             var num = styleGroups[style];
 
             endAt = startAt + (num * 360 / total);
-            ctx.fillStyle = this._getStyleColor(style);
+            ctx.fillStyle = style || this._getStyleColor(style);
 
             if (total > num) {
                 startAt = this._drawSector(x, y, radius, startAt, endAt);
