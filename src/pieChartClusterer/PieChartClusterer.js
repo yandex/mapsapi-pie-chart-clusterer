@@ -22,7 +22,7 @@ ym.modules.define('PieChartClusterer', [
             // Создаем метку-кластер с помощью стандартной реализации метода.
             var clusterPlacemark = PieChartClusterer.superclass.createCluster.call(this, center, geoObjects);
             var styleGroups = geoObjects.reduce(function (groups, geoObject) {
-                var style = geoObject.options.get('iconColor', 'blue');
+                var style = geoObject.options.get('iconColor', 'lightBlue');
 
                 groups[style] = ++groups[style] || 1;
 
