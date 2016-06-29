@@ -12,9 +12,6 @@ ym.modules.define('PieChartClusterer', [
     iconParams,
     PieChartClustererCanvas
 ) {
-
-    var STYLE_REG_EXP = /#(.+?)(?=Icon|DotIcon|StretchyIcon|CircleIcon|CircleDotIcon)/;
-
     var PieChartClusterer = defineClass(function (options) {
         PieChartClusterer.superclass.constructor.call(this, options);
 
@@ -25,7 +22,7 @@ ym.modules.define('PieChartClusterer', [
             // Создаем метку-кластер с помощью стандартной реализации метода.
             var clusterPlacemark = PieChartClusterer.superclass.createCluster.call(this, center, geoObjects);
             var styleGroups = geoObjects.reduce(function (groups, geoObject) {
-                var style = getIconStyle(geoObject.options.get('preset', 'islands#blueIcon'));
+                var style = geoObject.options.get('iconColor', 'lightBlue');
 
                 groups[style] = ++groups[style] || 1;
 
@@ -47,9 +44,6 @@ ym.modules.define('PieChartClusterer', [
         }
     });
 
-    function getIconStyle(preset) {
-        return preset.match(STYLE_REG_EXP)[1];
-    }
 
     provide(PieChartClusterer);
 });
